@@ -4,8 +4,9 @@
     <div>
         <ul class="flex gap-5">
             <li><x-btns.navbtn href="{{url('/')}}">Home</x-navbtn></li>
-            <li><x-btns.navbtn href="{{url('show/')}}">Show</x-navbtn></li>
-            <li><x-btns.navbtn href="{{url('store/')}}">Store</x-navbtn></li>
+            <li><x-btns.navbtn href="{{url('products')}}">Products</x-navbtn></li>
+            <li><x-btns.navbtn href="{{url('show')}}">Show</x-navbtn></li>
+            <li><x-btns.navbtn href="{{url('store')}}">Store</x-navbtn></li>
         </ul>
     </div>
 </div>

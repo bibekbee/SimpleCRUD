@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [indexController::class, 'welcome']);
 Route::post('/', [ViewController::class, 'logout']);
 
+Route::get('products', [indexController::class, 'products']);
 Route::get('/store', [indexController::class, 'index'])->middleware('auth');
 Route::post('/store', [indexController::class, 'store']);
 Route::get('/show', [indexController::class, 'show'])->name('show');

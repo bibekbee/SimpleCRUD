@@ -22,10 +22,13 @@
                 <div class="block">
                 @foreach ($allJobs as $job)
                <div class="text-center m-4 p-4 rounded-lg border-2 border-gray-600">
-                <h1 class="text-lg font-bold text-blue-600">{{$job->first_name}}</h1>
-                <h2 class="text-md">{{$job->last_name}}</h2>
-                <p class="text-md">{{$job->email}}</p>
-                <!-- <td><button id="{{$job->id}}" class="bg-blue-400 rounded-md px-2 text-gray-50" onclick="edit(event)">Edit</button></td>  -->
+  
+                        <h1 class="text-lg font-bold text-blue-600">
+                                <span class="text-black">Name:</span> {{$job->first_name}} {{$job->last_name}}
+                        </h1>
+        
+                        <p class="text-md"><strong>Email:</strong> {{$job->email}}</p>
+                        <!-- <td><button id="{{$job->id}}" class="bg-blue-400 rounded-md px-2 text-gray-50" onclick="edit(event)">Edit</button></td>  -->
                 </div>
                 @endforeach
                 </div>
