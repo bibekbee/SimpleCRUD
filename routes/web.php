@@ -6,10 +6,11 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 
 
-Route::get('/', [indexController::class, 'welcome']);
+Route::get('/', [WelcomeController::class, 'welcome']);
 Route::post('/', [ViewController::class, 'logout']);
 
 Route::get('products', [ProductController::class, 'index']);
