@@ -19,7 +19,7 @@
             <td>{{$job->last_name}}</td>
             <td>{{$job->email}}</td>
             @can('edit', $job)
-            <td><button id="{{$job->id}}" class="bg-blue-400 rounded-md px-2 text-gray-50" onclick="edit(event)">Edit</button></td> 
+            <td><button id="{{$job->id}}" class="bg-blue-400 rounded-md px-2 text-gray-50" onclick="edit(event, 'show')">Edit</button></td> 
             @endcan
         </tr>
         @endforeach

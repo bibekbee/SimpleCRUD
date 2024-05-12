@@ -11,16 +11,16 @@
     {{$slot}}
 </body>
 <script defer>
-        function cancle() {
-            window.location.href = `{{url('/')}}`
+        function cancle(route = '/') {
+            window.location.href = `{{url('${route}')}}`
         }
 
-        function edit(e) {
-            window.location.href = `{{url('show/${e.target.id}')}}`
+        function edit(e, route) {
+            window.location.href = `{{url('${route}/${e.target.id}')}}`
         }
 
-        function update(e) {
-            window.location.href = `{{url('show/${e.target.id}/edit')}}`
+        function update(e, route) {
+            window.location.href = `{{url('${route}/${e.target.id}/edit')}}`
         }
 
 </script>

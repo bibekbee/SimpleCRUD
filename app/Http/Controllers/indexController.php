@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\Models\Newjobs;
-use App\Models\Product;
+
 use App\Models\User;
 
 class indexController extends Controller
@@ -18,12 +18,6 @@ class indexController extends Controller
         $allJobs = Newjobs::paginate(4);
         return view('welcome', compact('allJobs'));
 
-    }
-
-    public function products(){
-        $allProducts = Product::all();
-        //return view('products', compact('allProducts'));
-        return view('products', ['products' => $allProducts]);
     }
 
     public function store(Request $request){
@@ -61,7 +55,7 @@ class indexController extends Controller
     }
 
     public function showTwo(Newjobs $job){
-        return view("showTwo", ['job'=>$job]);
+        return view("showTwo", ['job'=>$job])->with('message', 'store');
     }
 
     public function edit(Newjobs $job){

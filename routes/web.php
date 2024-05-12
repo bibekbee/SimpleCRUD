@@ -5,13 +5,19 @@ use App\Http\Controllers\indexController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', [indexController::class, 'welcome']);
 Route::post('/', [ViewController::class, 'logout']);
 
-Route::get('products', [indexController::class, 'products']);
+Route::get('products', [ProductController::class, 'index']);
+Route::get('products/{id}', [ProductController::class, 'show']);
+Route::get('products/{product}/edit', [ProductController::class, 'edit']);
+Route::patch('products/{id}', [ProductController::class, 'update']);
+Route::delete('products/{id}', [ProductController::class, 'delete']);
+
 Route::get('/store', [indexController::class, 'index'])->middleware('auth');
 Route::post('/store', [indexController::class, 'store']);
 Route::get('/show', [indexController::class, 'show'])->name('show');
