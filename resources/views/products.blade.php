@@ -8,7 +8,7 @@
     <h1><b>Product Quantity:</b> {{$product->quantity}}</h1>
 </div>
 <div>
-    <button id="{{$product->id}}" class="bg-blue-400 rounded-md px-2 text-gray-50" onclick="edit(event, 'products')">Edit</button>
+    <button id="{{$product->id}}" class="bg-green-700 rounded-md px-2 text-gray-50" onclick="edit(event, 'products')">Edit</button>
 </div>
 </div>
 @endforeach
