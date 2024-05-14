@@ -14,12 +14,6 @@ class indexController extends Controller
        return view("store");
     }
 
-    public function welcome(){
-        $allJobs = Newjobs::paginate(4);
-        return view('welcome', compact('allJobs'));
-
-    }
-
     public function store(Request $request){
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:100',
