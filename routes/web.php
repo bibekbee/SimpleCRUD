@@ -16,8 +16,8 @@ Route::post('/', [ViewController::class, 'logout']);
 Route::get('products', [ProductController::class, 'index']);
 Route::get('products/{id}', [ProductController::class, 'show'])->middleware('auth');
 Route::get('products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->can('edit', 'product');
-Route::patch('products/{id}', [ProductController::class, 'update']);
-Route::delete('products/{id}', [ProductController::class, 'delete']);
+Route::patch('products/{id}', [ProductController::class, 'update'])->middleware('auth');
+Route::delete('products/{id}', [ProductController::class, 'delete'])->middleware('auth');
 
 Route::get('/store', [indexController::class, 'index'])->middleware('auth');
 Route::post('/store', [indexController::class, 'store']);

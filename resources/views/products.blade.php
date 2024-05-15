@@ -7,9 +7,11 @@
     <h1><b>Product Price:</b> {{$product->price}}</h1>
     <h1><b>Product Quantity:</b> {{$product->quantity}}</h1>
 </div>
+@auth
 <div>
     <button id="{{$product->id}}" class="bg-green-700 rounded-md px-2 text-gray-50" onclick="edit(event, 'products')">Edit</button>
 </div>
+@endauth
 </div>
 @endforeach
 </div>
