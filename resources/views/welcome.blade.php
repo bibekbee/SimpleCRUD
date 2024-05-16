@@ -1,5 +1,5 @@
 <x-layout>
-        <div class="mt-8">
+        <div class="my-2">
                 @guest
                         <div class="flex gap-2 justify-end mr-10">
                                 <a class="bg-green-600 text-gray-50 px-4 py-1 rounded-md" href="{{url('register')}}">Register</a>
@@ -10,18 +10,19 @@
                 @auth
                         <form method="POST" action="{{url('/')}}" class="flex justify-end pr-10 mt-2">
                         @csrf
-                        <input type="submit" class="bg-blue-600 text-gray-50 px-4 py-1 rounded-md" value="LogOut"/>
+                        <input type="submit" class="border-2 hover:border-gray-50 hover:bg-blue-600 hover:text-gray-50 border-gray-200 text-blue-600 px-6 py-1 rounded-md" value="LogOut"/>
                         </form>
                 @endauth
         </div>
-
-        <h1 class="text-3xl font-bold underline text-center mb-5"><a href="#">The LaravelPage</a></h1>
-        <x-input background="text-3xl bg-blue-400 cursor-pointer" children="Laravel Members"/>           
-         
-        <div >
-                <div class="block">
+        <div>
+                <hr>
+                <x-inputx class="text-lg font-semibold text-gray-800" children="Laravel Members"/>           
+                <hr>
+        </div>
+        <div>
+                <div class="max-w-[960px] mx-auto my-4">
                 @foreach ($allJobs as $job)
-               <div class="text-center m-4 p-4 rounded-lg border-2 border-gray-600">
+               <div class="text-center my-3 p-10 rounded-lg border-2  border-gray-600">
   
                         <h1 class="text-lg font-bold text-blue-600">
                                 <span class="text-black">Name:</span> {{$job->first_name}} {{$job->last_name}}
@@ -34,7 +35,13 @@
                 </div>
                 
         </div>
-        <div class="mx-4">
+
+        <div class="m-4 max-w-[960px] mx-auto">
                 {{$allJobs->links('pagination::tailwind')}}
         </div>
+
+        <div class="h-20">
+                <hr>
+        </div>
+       
 </x-layout>
