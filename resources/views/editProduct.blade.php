@@ -1,7 +1,7 @@
 <x-layout>
    
     <div class="mx-5 lg:mx-52 mt-20">
-        <form method="post" action="{{url('products', [$product->id])}}">
+        <form method="post" action="{{url('products', [$product->id])}}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="space-y-12">
@@ -41,6 +41,19 @@
                 <div class="mt-2">
                     <input id="quantity" name="quantity" type="number" value="{{$product->quantity}}" class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
                 </div>
+                <span class="text-red-500 italic text-sm mt-1">
+                    @error('quantity')
+                        {{$message}}
+                    @enderror
+                </span>
+                </div>
+
+                <div class="sm:col-span-4">
+                <label for="image" class="block text-sm font-medium leading-6 text-gray-900">Product  Image</label>
+                <div class="mt-2">
+                    <input id="image" name="image" type="file" accept="image/*" class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+
                 <span class="text-red-500 italic text-sm mt-1">
                     @error('quantity')
                         {{$message}}

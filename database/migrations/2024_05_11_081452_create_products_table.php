@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->double('price');
             $table->double('quantity');
+            $table->string('image')->nullable();
             $table->foreignIdFor(User::class);
             $table->timestamps();
         });

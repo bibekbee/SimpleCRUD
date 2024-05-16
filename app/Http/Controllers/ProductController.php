@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -25,13 +27,35 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $id){
+
         $validated = $request->validate([
             'name' => 'required',
             'price' => 'required',
             'quantity' => 'required',
+            'image' => ['image', File::types(['png', 'jpg', 'webp'])],
         ]);
+        
         $product = Product::findorfail($id);
-        $product->update($validated);
+
+        if($request->has('image')){
+            $imagePath = $request->image->store('images');
+
+            if($product->image != null){
+                Storage::disk('public')->delete($product->image);
+            }
+        }else{
+            $imagePath = null;
+            if($product->image != null){
+                Storage::disk('public')->delete($product->image);
+            }
+        }
+
+        $product->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'image' => $imagePath,
+        ]);
         return redirect('products');
     }
 
