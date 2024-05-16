@@ -16,7 +16,7 @@
         </div>
         <div>
                 <hr>
-                <x-inputx class="text-lg font-semibold text-gray-800" children="Laravel Members"/>           
+                <x-inputx class="text-lg font-semibold text-gray-800" children="Workflow Members"/>           
                 <hr>
         </div>
         <div>
