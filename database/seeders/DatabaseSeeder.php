@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'jhondoe@gmail.com',
             'password' => 'pass'
         ]);
+        
         Newjobs::factory(10)->create();
         Product::factory(10)->create();
     }
