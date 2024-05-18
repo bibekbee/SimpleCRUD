@@ -6,7 +6,7 @@
             <li><x-btns.navbtn href="{{url('/')}}">Home</x-navbtn></li>
             <li><x-btns.navbtn href="{{url('products')}}">Products</x-navbtn></li>
             <li><x-btns.navbtn href="{{url('show')}}">Show</x-navbtn></li>
-            <li><x-btns.navbtn href="{{url('store')}}">Store</x-navbtn></li>
+            <li><x-btns.navbtn href="{{url('create')}}">Add Member</x-navbtn></li>
         </ul>
     </div>
 </div>

@@ -16,15 +16,17 @@ Route::get('/', [WelcomeController::class, 'welcome']);
 Route::post('/', [ViewController::class, 'logout']);
 
 Route::get('products', [ProductController::class, 'index']);
-Route::get('products/{id}', [ProductController::class, 'show'])->middleware('auth');
+Route::get('products/create', [ProductController::class, 'create']);
+Route::post('products/create', [ProductController::class, 'store']);
+Route::get('products/{id}', [ProductController::class, 'deleteUpdate'])->middleware('auth');
 Route::get('products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->can('edit', 'product');
 Route::patch('products/{id}', [ProductController::class, 'update'])->middleware('auth');
 Route::delete('products/{id}', [ProductController::class, 'delete'])->middleware('auth');
 
-Route::get('/store', [indexController::class, 'index'])->middleware('auth');
-Route::post('/store', [indexController::class, 'store']);
-Route::get('/show', [indexController::class, 'show'])->name('show');
-Route::get('show/{job}', [indexController::class, 'showTwo'])->name('showTwo')->middleware('auth')->can('edit','job');
+Route::get('create', [indexController::class, 'create'])->middleware('auth');
+Route::post('create', [indexController::class, 'store']);
+Route::get('show', [indexController::class, 'show'])->name('show');
+Route::get('show/{job}', [indexController::class, 'deleteUpdate'])->name('update')->middleware('auth')->can('edit','job');
 Route::get('show/{job}/edit', [indexController::class, 'edit'])->name('edit')->middleware('auth')->can('edit','job');
 Route::patch('store/{id}', [indexController::class, 'update']);
 Route::delete('store/{id}', [indexController::class, 'delete']);

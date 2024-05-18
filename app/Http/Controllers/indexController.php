@@ -10,8 +10,8 @@ use App\Models\User;
 
 class indexController extends Controller
 {
-    public function index(){
-       return view("store");
+    public function create(){
+       return view("storeMembers")->with("name", "store");
     }
 
     public function store(Request $request){
@@ -29,7 +29,7 @@ class indexController extends Controller
             'user_id' => $user->id
         ]);
 
-        return redirect()->route('show');
+        return redirect('show');
     }
 
     public function show(Request $request){
@@ -48,13 +48,14 @@ class indexController extends Controller
         }
     }
 
-    public function showTwo(Newjobs $job){
-        return view("showTwo", ['job'=>$job])->with('message', 'store');
+    public function deleteUpdate(Newjobs $job){
+        return view("dupage", ['job'=>$job])->with('message', 'store');
     }
 
     public function edit(Newjobs $job){
         $editJob = $job;
-        return view("edit", compact('editJob'));
+        $name = 'update';
+        return view("storeMembers", compact('editJob', 'name'));
     }
 
     public function update(Request $request, $id){
