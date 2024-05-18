@@ -3,7 +3,7 @@
     <a class="border-2 border-gray-600 py-2 px-10 mt-2 mr-24" href="{{url('products/create')}}">Add New</a>
 </div>
 
-<div class="mt-10 w-3/4 mx-auto grid grid-cols-3">
+<div class="mt-10 w-3/4 mx-auto grid lg:grid-cols-3">
 @foreach($products as $product)
 <div class="m-6 p-6 border-2 border-gray-800/50 rounded-md">
 

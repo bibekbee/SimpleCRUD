@@ -7,19 +7,19 @@
     </div>
     <div class="flex justify-center mt-2">
     
-    <table cellpadding="15px" class="my-4">
-        <tr class="border-gray-600 border-2">
+    <table class="my-4 text-xs lg:text-sm">
+        <tr class="border-gray-600 border-2 p-10">
             <th>FirstName</th>
             <th>LastName</th>
             <th>Email</th>
         </tr>
         @foreach ($allJobs as $job)
-        <tr class="border-gray-600 border-2">
-            <td>{{$job->first_name}}</td>
-            <td>{{$job->last_name}}</td>
-            <td>{{$job->email}}</td>
+        <tr >
+            <td class="border-gray-600 border-2 p-2 lg:py-2 lg:px-10">{{$job->first_name}}</td>
+            <td class="border-gray-600 border-2 p-2 lg:py-2 lg:px-10">{{$job->last_name}}</td>
+            <td class="border-gray-600 border-2 p-2 lg:py-2 lg:px-10">{{$job->email}}</td>
             @can('edit', $job)
-            <td><button id="{{$job->id}}" class="bg-blue-400 rounded-md px-2 text-gray-50" onclick="edit(event, 'show')">Edit</button></td> 
+            <td class="border-gray-600 border-2 lg:p-4"><button id="{{$job->id}}" class="bg-blue-400 rounded-md px-2 text-gray-50" onclick="edit(event, 'show')">Edit</button></td> 
             @endcan
         </tr>
         @endforeach
