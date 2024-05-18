@@ -9,8 +9,7 @@ class WelcomeController extends Controller
 {
     
     public function welcome(){
-        $allJobs = Newjobs::latest()->paginate(4);
-        return view('welcome', compact('allJobs'));
+        return view('home');
 
     }
 
