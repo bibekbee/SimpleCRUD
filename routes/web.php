@@ -10,7 +10,7 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
-
+use App\Jobs\aJobLogger;
 
 Route::get('/', [WelcomeController::class, 'welcome']);
 Route::post('/', [ViewController::class, 'logout']);
@@ -40,6 +40,10 @@ Route::get('mail', function (){
     Mail::to('example@gmail.com', 'Hero_Name')
         ->send( new firstMailSender('Bibek'));
     return "Email sent 👏🏽";
+});
+
+Route::get('doajob', function(){
+    aJobLogger::dispatch();
 });
 
 
