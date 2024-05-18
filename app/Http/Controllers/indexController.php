@@ -44,7 +44,7 @@ class indexController extends Controller
         }
             return view("show", compact('allJobs', 'data'));
         }else{
-            return redirect('/');
+            return view('show', ['allJobs' => Newjobs::all()])->with('data', '');
         }
     }
 

@@ -25,11 +25,11 @@ Route::delete('products/{id}', [ProductController::class, 'delete'])->middleware
 
 Route::get('create', [indexController::class, 'create'])->middleware('auth');
 Route::post('create', [indexController::class, 'store']);
-Route::get('show', [indexController::class, 'show'])->name('show');
+Route::get('show', [indexController::class, 'show']);
 Route::get('show/{job}', [indexController::class, 'deleteUpdate'])->name('update')->middleware('auth')->can('edit','job');
 Route::get('show/{job}/edit', [indexController::class, 'edit'])->name('edit')->middleware('auth')->can('edit','job');
-Route::patch('store/{id}', [indexController::class, 'update']);
-Route::delete('store/{id}', [indexController::class, 'delete']);
+Route::patch('store/{id}', [indexController::class, 'update'])->middleware('auth')->can('edit','job');
+Route::delete('store/{id}', [indexController::class, 'delete'])->middleware('auth')->can('edit','job'); 
 
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('register', [RegisterController::class, 'create'])->name('register');
