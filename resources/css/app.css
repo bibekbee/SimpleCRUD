@@ -2,17 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .cart{
-    margin-left: 6%;
+    position:absolute;
+    top:0;
     font-size: 4rem;
+    overflow-x: hidden;
     animation-name: flow;
     animation-duration: 10s;
-    animation-fill-mode: backwards;
+    animation-fill-mode: both;
     animation-iteration-count: 3;
 }
 
 @keyframes flow{
-    from{ transform: translateX(0) }
-    to{ transform: translateX(88.5%) }
+    from{ transform: translateX(100px) }
+    to{ transform: translateX(89vw) }
 }

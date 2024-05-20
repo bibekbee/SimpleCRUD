@@ -1,5 +1,8 @@
 <x-layout>
-    <div class="my-20">
+  @auth
+  <div class="text-end mr-10"><a href="{{route('setting')}}">Setting</a></div>
+  @endauth
+    <div class="mt-20">
       <div class="container text-center m-auto">
           <div class="w-3/4 m-auto">
           <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Find the best deals on every single items</h1>
@@ -14,7 +17,7 @@
           <hr class="mt-4">
       </div>
 
-      <div id="img_onroll" class="mx-auto mt-10 container flex justify-center gap-10 card-container flex-wrap">
+      <div id="img_onroll" class="mx-auto mt-10 container flex justify-center gap-10 flex-wrap">
        
       </div>
 
@@ -28,11 +31,13 @@
         </div>
       </div>
     </div>
+    <div class="-mt-5 mb-20 relative">
+        <span class="cart">🚟<p class="text-center text-white">|<p class="text-center mt-8">|</p></p></span>
+       
+    </div>
 
-    <div class="mb-10">
-      <div class="cart">
-        <p>🚟</p>
-      </div>
-    <div>
-   
+    <div class="mt-28 mb-20">
+      <div class="fourdiv container mx-auto mt-10 flex justify-between bg-blue-600 rounded-sm"></div>
+    </div>
+
 </x-layout>
