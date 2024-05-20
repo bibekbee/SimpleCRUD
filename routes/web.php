@@ -36,6 +36,12 @@ Route::post('register', [RegisterController::class, 'create'])->name('register')
 Route::get('signin', [SigninController::class, 'index'])->name('login');
 Route::post('signin', [SigninController::class, 'show'])->name('login');
 
+Route::get('setting', function(){
+    $user = Auth::user();
+    // dd($user);
+    return view('profile', ['user' => $user]);
+})->name('setting');
+
 Route::get('mail', function (){
     Mail::to('example@gmail.com', 'Hero_Name')
         ->send( new firstMailSender('Bibek'));
@@ -45,6 +51,7 @@ Route::get('mail', function (){
 Route::get('doajob', function(){
     aJobLogger::dispatch();
 });
+
 
 
 

@@ -9,7 +9,7 @@
             <li><x-btns.navbtn href="{{url('create')}}">Add Member</x-navbtn></li>
         </ul>
 
-        <div class="py-1 flex justify-end">
+        <div class="py-1 flex justify-end items-center gap-5">
               @guest
               <a href="{{url('signin')}}" class="cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium bg-gray-50 text-gray-700 hover:bg-gray-100">Log in &#8594;</a>
               @endguest
@@ -21,6 +21,7 @@
                         </form>
               </div>
               @endauth
+              
         </div>
     </div>
 </div>
