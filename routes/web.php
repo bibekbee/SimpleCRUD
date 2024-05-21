@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\indexController;
+use Illuminate\Http\Request;
 use App\Mail\firstMailSender;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SigninController;
@@ -40,13 +41,53 @@ Route::get('setting', function(){
     $user = Auth::user();
     // dd($user);
     return view('profile', ['user' => $user]);
-})->name('setting');
+})->name('setting')->middleware('auth');
+
+Route::post('setting', function(){
+    $user = Auth::user();
+    $user->delete();
+    return redirect('setting');
+});
+
+Route::patch('setting', function(Request $request){
+    $validate = $request->validate([
+        'oldpassword' => 'required|current_password',
+        'newpassword' => 'required|confirmed',
+        'newpassword_confirmation' => 'required'
+    ]);
+    $user = Auth::user();
+    $user->update([
+        'password' => bcrypt($validate['newpassword'])
+    ]);
+    Auth::logout();
+    return redirect('/');
+});
+
+Route::post('setting/edit', function(Request $request){
+    $validate = $request->validate([
+        'name' => 'required|string|'
+    ]);
+
+    $user = Auth::user();
+
+    if ($validate['name'] === $user->name) {
+        return redirect('setting');
+    }else{
+        $user->update([
+            'name' => $validate['name']
+        ]);
+    }
+
+    return redirect('setting');
+
+});
 
 Route::get('mail', function (){
-    Mail::to('example@gmail.com', 'Hero_Name')
+    Mail::to('at@test.sisnetelecenter.org')
         ->send( new firstMailSender('Bibek'));
     return "Email sent 👏🏽";
 });
+
 
 Route::get('doajob', function(){
     aJobLogger::dispatch();
