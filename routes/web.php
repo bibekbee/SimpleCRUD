@@ -31,11 +31,11 @@ Route::get('show', [indexController::class, 'show']);
 Route::get('show/{job}', [indexController::class, 'deleteUpdate'])->name('update')->middleware('auth')->can('edit','job');
 Route::get('show/{job}/edit', [indexController::class, 'edit'])->name('edit')->middleware('auth')->can('edit','job');
 Route::patch('store/{id}', [indexController::class, 'update'])->middleware('auth')->can('edit','job');
-Route::delete('store/{id}', [indexController::class, 'delete'])->middleware('auth')->can('edit','job'); 
+Route::delete('store/{job}', [indexController::class, 'delete'])->middleware('auth')->can('edit','job'); 
 
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('register', [RegisterController::class, 'create'])->name('register');
-Route::get('signin', [SigninController::class, 'index'])->name('login')->name('users.signin');
+Route::get('signin', [SigninController::class, 'index'])->name('login');
 Route::post('signin', [SigninController::class, 'show'])->name('login');
 Route::post('signin/edit', [SigninController::class, 'passMail']);
 Route::get('signin/{token}', [SigninController::class, 'passReset'])->name('passwordReset');

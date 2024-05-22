@@ -69,8 +69,8 @@ class indexController extends Controller
         return redirect('/show');
     }
 
-    public function delete(Request $request){
-        $job = Newjobs::findorfail($request->id);
+    public function delete(Newjobs $job){
+        // $job = Newjobs::findorfail($request->id);
         $job->delete();
         return redirect('/show');
     }
