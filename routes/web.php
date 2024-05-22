@@ -10,7 +10,6 @@ use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WelcomeController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use App\Jobs\aJobLogger;
 
@@ -38,16 +37,57 @@ Route::post('register', [RegisterController::class, 'create'])->name('register')
 Route::get('signin', [SigninController::class, 'index'])->name('login');
 Route::post('signin', [SigninController::class, 'show'])->name('login');
 
-Route::get('setting', [ProfileController::class, 'index'] )->name('setting')->middleware('auth');
-Route::post('setting/edit', [ProfileController::class, 'editName'])->middleware('auth');
-Route::patch('setting', [ProfileController::class, 'updatePass'])->middleware('auth');
-Route::post('setting', [ProfileController::class, 'delete'])->middleware('auth');
+Route::get('setting', function(){
+    $user = Auth::user();
+    // dd($user);
+    return view('profile', ['user' => $user]);
+})->name('setting')->middleware('auth');
+
+Route::post('setting', function(){
+    $user = Auth::user();
+    $user->delete();
+    return redirect('setting');
+});
+
+Route::patch('setting', function(Request $request){
+    $validate = $request->validate([
+        'oldpassword' => 'required|current_password',
+        'newpassword' => 'required|confirmed',
+        'newpassword_confirmation' => 'required'
+    ]);
+    $user = Auth::user();
+    $user->update([
+        'password' => bcrypt($validate['newpassword'])
+    ]);
+    Auth::logout();
+    return redirect('/');
+});
+
+Route::post('setting/edit', function(Request $request){
+    $validate = $request->validate([
+        'name' => 'required|string|'
+    ]);
+
+    $user = Auth::user();
+
+    if ($validate['name'] === $user->name) {
+        return redirect('setting');
+    }else{
+        $user->update([
+            'name' => $validate['name']
+        ]);
+    }
+
+    return redirect('setting');
+
+});
 
 Route::get('mail', function (){
     Mail::to('at@test.sisnetelecenter.org')
         ->send( new firstMailSender('Bibek'));
     return "Email sent 👏🏽";
 });
+
 
 Route::get('doajob', function(){
     aJobLogger::dispatch();
