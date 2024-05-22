@@ -11,7 +11,7 @@
         </div>
         <div id="form"></div>
         <div>
-            <button onclick="editUserName()" class="text-sm bg-indigo-500 rounded-lg text-white px-4 py-2 mt-2 font-semibold">Edit Profile</button>
+            <button onclick="generateForm('text','name','Name')" class="text-sm bg-indigo-500 rounded-lg text-white px-4 py-2 mt-2 font-semibold">Edit Profile</button>
         </div>
     </div>
     <div>

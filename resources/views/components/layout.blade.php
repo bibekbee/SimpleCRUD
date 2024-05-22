@@ -31,22 +31,20 @@
                 formElement.innerHTML = '';
                 formElement.method = "get";
                 formElement.action = "{{url('setting')}}";
-                console.log("Cancle");
             }else{
                 formElement.action = "{{url('setting')}}";
             }
         }
 
-        function editUserName(){
+        function generateForm(type,name,label,event){
         let formdiv = document.querySelector('#form');
-        console.log(formdiv);
         let userName = document.querySelector('#userName');
         let form = document.createElement('form');
         form.action = window.location.href + '/edit';
         form.method = 'post';
         form.innerHTML = `@csrf
-            <label class="font-blod mb-2" for="name">Name:</label>
-            <input id="name" type="text" name="name" value="${userName.innerHTML.slice(5)}"/>
+            <label class="font-blod mb-2" for="name">${label}:</label>
+            <input id="name" type="${type}" name="${name}" value="${userName ? userName.innerHTML.slice(5): ''}" required/>
             <input class="mt-5 py-1 px-4 bg-blue-500 rounded-lg text-white" type="submit" value="submit"/>`;
         formdiv.classList.add('absolute','top-[30%]','lg:left-[40%]','rounded-lg','p-5','lg:p-20','bg-gray-100');
         form.classList.add('flex', 'flex-col');
