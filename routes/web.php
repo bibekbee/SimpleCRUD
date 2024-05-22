@@ -35,8 +35,11 @@ Route::delete('store/{id}', [indexController::class, 'delete'])->middleware('aut
 
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('register', [RegisterController::class, 'create'])->name('register');
-Route::get('signin', [SigninController::class, 'index'])->name('login');
+Route::get('signin', [SigninController::class, 'index'])->name('login')->name('users.signin');
 Route::post('signin', [SigninController::class, 'show'])->name('login');
+Route::post('signin/edit', [SigninController::class, 'passMail']);
+Route::get('signin/{token}', [SigninController::class, 'passReset'])->name('passwordReset');
+Route::patch('signin/{token}', [SigninController::class, 'passUpdated']);
 
 Route::get('setting', [ProfileController::class, 'index'] )->name('setting')->middleware('auth');
 Route::post('setting/edit', [ProfileController::class, 'editName'])->middleware('auth');

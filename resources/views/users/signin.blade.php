@@ -1,5 +1,11 @@
 <x-layout>
-   
+   @if($success)
+    <div class="{{$success == 'Failed to send the Mail' ? 'bg-red-400' : 'bg-green-400'}} px-6 py-4 flex justify-between space-x-10">
+        <span>{{$success}}</span>
+        <a href="{{ url('signin') }}">x</button>
+    </div>
+   @endif 
+
     <div class="mx-5 lg:mx-52 mt-20">
         <form method="post" action="{{url('signin')}}">
         @csrf
@@ -33,8 +39,8 @@
                 </div>
         </form>
     </div>
-
-    <div class="text-sm text-red-500 mt-2 w-1/2 text-end -ml-4 underline">
-        <a href="#">forgot password</a>
+    <div id="form"></div>
+    <div class="text-sm text-red-500 mt-4 w-1/2 text-end -ml-4 underline">
+        <button onclick="generateForm('email','email','Email')">forgot password</button>
     </div>
 </x-layout>
