@@ -1,6 +1,5 @@
 <x-layout>
    
-
     <div class="mx-5 lg:mx-52 mt-20">
         <form method="post" action="{{url('register')}}">
         @csrf

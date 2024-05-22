@@ -25,8 +25,7 @@
 
         <div>
             <div class="text-sm">
-                <h1>Some additional Information<h1>
-                <p>You will get a confirmation email to change your password</p>
+                <h1>You can Delete your account by clicking the button below<h1>
             </div>
         </div>
 

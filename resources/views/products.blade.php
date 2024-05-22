@@ -8,7 +8,6 @@
 <div class="m-6 p-6 border-2 border-gray-800/50 rounded-md">
 
     <div class="w-full h-full flex flex-col text-gray-600">
-     
         <div class="mb-4">
             <img class="cursor-pointer" src="{{'storage/' . $product->image}}" alt="{{$product->name}}"/>
         </div>
@@ -23,12 +22,12 @@
             </div>
             @endauth
         </div>
-    
     </div>
 
 </div>
 @endforeach
 </div>
+
     <div class="max-w-[1060px] mx-auto">
         {{$products->links()}}
     </div>

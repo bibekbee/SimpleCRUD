@@ -17,9 +17,7 @@
           <hr class="mt-4">
       </div>
 
-      <div id="img_onroll" class="mx-auto mt-10 container flex justify-center gap-10 flex-wrap">
-       
-      </div>
+      <div id="img_onroll" class="mx-auto mt-10 container flex justify-center gap-10 flex-wrap"></div>
 
       <div class="container mx-auto mt-10 grid grid-cols-4 text-center">
         <div class="pt-10 h-52 col-span-3 bg-gray-200">
@@ -33,7 +31,6 @@
     </div>
     <div class="-mt-5 mb-20 relative">
         <span class="cart">🚟<p class="text-center text-white">|<p class="text-center mt-8">|</p></p></span>
-       
     </div>
 
     <div class="mt-28 mb-20">
