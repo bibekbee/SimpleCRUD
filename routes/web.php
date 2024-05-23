@@ -24,6 +24,7 @@ Route::get('products/{id}', [ProductController::class, 'deleteUpdate'])->middlew
 Route::get('products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->can('edit', 'product');
 Route::patch('products/{id}', [ProductController::class, 'update'])->middleware('auth');
 Route::delete('products/{id}', [ProductController::class, 'delete'])->middleware('auth');
+Route::post('rating', [ProductController::class, 'rating']);
 
 Route::get('create', [indexController::class, 'create'])->middleware('auth');
 Route::post('create', [indexController::class, 'store']);

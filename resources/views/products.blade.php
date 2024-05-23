@@ -16,7 +16,19 @@
             <h1><b>Product Name:</b> {{$product->name}}</h1>
             <h1><b>Product Price:</b> {{$product->price}}</h1>
             <h1><b>Product Quantity:</b> {{$product->quantity}}</h1>
+            @guest
+            <h1><b>Stars:</b> {{$product->stars->avg('rating')}}</h1>
+            @endguest
+
             @auth
+            <form action="{{url('rating')}}" method="post">
+                @csrf
+                <input class="hidden" type="text" name="id" value="{{$product->stars[Auth::id() - 1]->id ?? null}}"/>
+                <input class="hidden" type="text" name="product_id" value="{{$product->id}}"/>
+                <input class="pl-1 w-[20px]" type="text" name="rating" value="{{$product->stars[Auth::id() - 1]->rating ?? 0}}"/>
+                <input type="submit"/>
+            </form>
+
             <div>
                 <button id="{{$product->id}}" class="bg-gray-600 rounded-md px-2 text-gray-50 float-end" onclick="edit(event, 'products')">Edit</button>
             </div>

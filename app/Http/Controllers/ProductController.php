@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use App\Models\Stars;
 use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -96,6 +98,41 @@ class ProductController extends Controller
         }
         $product->delete();
         return redirect('products');
+    }
+
+    public function rating(Request $request){
+       $validate = $request->validate([
+            'rating' => 'required|integer|between:0,5'
+        ]);
+
+
+        if($request->id !== null){
+            $star = Stars::find($request->id);
+            $star->update([
+                'user_id' => Auth::id(),
+                'product_id' => $request->product_id,
+                'rating' => $request->rating,
+                'updated_at' => Carbon::now()
+            ]);
+        }else{
+            Stars::insert([
+                'user_id' => Auth::id(),
+                'product_id' => $request->product_id,
+                'rating' => $request->rating,
+                'created_at' => Carbon::now()
+            ]);
+        }
+
+        
+
+        // if($star->created_at == null){
+        //     $star->created_at = Carbon::now();
+        //     $star->save();
+        // }else{
+        //     $star->updated_at = Carbon::now();
+        //     $star->save();
+        // }
+        return redirect()->back();
     }
 
 }
