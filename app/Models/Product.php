@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Stars;
 
 class Product extends Model
 {
@@ -13,9 +14,10 @@ class Product extends Model
     protected $guarded = [];
 
     protected function user(){
-        //maybe
         return $this->belongsTo(User::class);
-        //return $this->hasMany(User::class);
-
     }
+    protected function stars(){
+        return $this->hasMany(Stars::class);
+    }
+
 }

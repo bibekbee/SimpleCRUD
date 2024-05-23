@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Newjobs;
+use App\Models\Stars;
 
 class User extends Authenticatable
 {
@@ -48,6 +49,10 @@ class User extends Authenticatable
 
     public function newjobs(){
         return $this->hasMany(Newjobs::class);
+    }
+
+    protected function stars(){
+        return $this->belongsTo(Stars::class);
     }
 
 }
