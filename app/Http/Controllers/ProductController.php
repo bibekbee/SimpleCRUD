@@ -15,8 +15,9 @@ class ProductController extends Controller
     
     public function index(){
         $allProducts = Product::latest()->paginate(6);
+        $star = Stars::all();
         //return view('products', compact('allProducts'));
-        return view('products', ['products' => $allProducts]);
+        return view('products', ['products' => $allProducts, 'star' => $star]);
     }
 
     public function deleteUpdate($id){
