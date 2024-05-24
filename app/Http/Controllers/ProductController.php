@@ -105,7 +105,6 @@ class ProductController extends Controller
             'rating' => 'required|integer|between:0,5'
         ]);
 
-
         if($request->id !== null){
             $star = Stars::find($request->id);
             $star->update([
@@ -123,15 +122,6 @@ class ProductController extends Controller
             ]);
         }
 
-        
-
-        // if($star->created_at == null){
-        //     $star->created_at = Carbon::now();
-        //     $star->save();
-        // }else{
-        //     $star->updated_at = Carbon::now();
-        //     $star->save();
-        // }
         return redirect()->back();
     }
 

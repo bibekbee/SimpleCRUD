@@ -52,7 +52,7 @@ class User extends Authenticatable
     }
 
     protected function stars(){
-        return $this->belongsTo(Stars::class);
+        return $this->hasMany(Stars::class);
     }
 
 }

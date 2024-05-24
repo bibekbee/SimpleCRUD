@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('stars', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Product::class);
             $table->integer('rating');
             $table->timestamps();
